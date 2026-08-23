@@ -1,0 +1,3 @@
+description: Invalid schema - files must be a list
+files:
+  README.md: "This should be a list item"
