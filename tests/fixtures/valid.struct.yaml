@@ -1,0 +1,25 @@
+description: A valid StructKit structure for testing
+
+variables:
+  - project_name:
+      type: string
+      default: my-project
+      description: Name of the project
+
+files:
+  - README.md:
+      content: |
+        # {{@ project_name @}}
+        A test project
+
+folders:
+  - src:
+      struct: project/python
+      with:
+        app_name: "{{@ project_name @}}"
+
+pre_hooks:
+  - echo "Starting generation"
+
+post_hooks:
+  - echo "Generation complete"
