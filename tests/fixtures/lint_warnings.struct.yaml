@@ -1,0 +1,13 @@
+variables:
+  - unused_var:
+      type: string
+      default: never-used
+
+  - used_var:
+      type: string
+      default: used
+
+files:
+  - README.md:
+      content: |
+        # Project with {{@ used_var @}}

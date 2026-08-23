@@ -1,0 +1,6 @@
+repos:
+  - repo: https://github.com/httpdss/structkit-pre-commit
+    rev: v1.0.0  # Replace with the latest release tag
+    hooks:
+      - id: structkit-validate
+      - id: structkit-lint
