@@ -1,8 +1,8 @@
 # structkit-pre-commit
 
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+Companion to [StructKit](https://github.com/httpdss/structkit). Pre-commit hooks that validate `.struct.yaml` before it lands. Star the [core repo](https://github.com/httpdss/structkit).
 
-Pre-commit hooks for validating [StructKit](https://github.com/httpdss/structkit) YAML structure files. These hooks ensure `.struct.yaml` and other structure definition files are valid and follow best practices before they're committed.
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## Features
 
