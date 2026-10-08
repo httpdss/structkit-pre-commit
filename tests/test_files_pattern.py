@@ -52,19 +52,20 @@ def _load_hook_files_patterns():
     current_id = None
     for raw_line in HOOKS_FILE.read_text().splitlines():
         line = raw_line.strip()
-        if line.startswith('id:'):
+        if line.startswith('id:') or line.startswith('- id:'):
             current_id = line.split(':', 1)[1].strip()
         elif line.startswith('files:') and current_id:
             patterns[current_id] = line.split(':', 1)[1].strip()
     return patterns
 
 
+@pytest.fixture
+def patterns():
+    return _load_hook_files_patterns()
+
+
 class TestHookFilesPattern:
     """Verify both hooks match .structkit.yaml and legacy .struct.yaml."""
-
-    @pytest.fixture(scope='class')
-    def patterns(self):
-        return _load_hook_files_patterns()
 
     def test_both_hooks_define_files(self, patterns):
         assert 'structkit-validate' in patterns
