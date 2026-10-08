@@ -3,7 +3,7 @@
   description: Validate StructKit YAML structure files for syntax and schema compliance
   entry: structkit-validate-hook
   language: python
-  files: \.struct\.yaml$|structures/.*\.ya?ml$
+  files: \.(structkit|struct)\.ya?ml$|structures/.*\.ya?ml$
   additional_dependencies: ['structkit']
 
 - id: structkit-lint
@@ -11,5 +11,5 @@
   description: Lint StructKit YAML structure files for quality and safety issues
   entry: structkit-lint-hook
   language: python
-  files: \.struct\.yaml$|structures/.*\.ya?ml$
+  files: \.(structkit|struct)\.ya?ml$|structures/.*\.ya?ml$
   additional_dependencies: ['structkit']

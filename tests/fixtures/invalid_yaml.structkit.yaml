@@ -1,0 +1,5 @@
+description: Invalid YAML syntax
+variables:
+  - project_name:
+    type: string
+    default: missing indent

@@ -1,6 +1,6 @@
 # structkit-pre-commit
 
-Companion to [StructKit](https://github.com/httpdss/structkit). Pre-commit hooks that validate `.struct.yaml` before it lands. Star the [core repo](https://github.com/httpdss/structkit).
+Companion to [StructKit](https://github.com/httpdss/structkit). Pre-commit hooks that validate `.structkit.yaml` before it lands (legacy `.struct.yaml` still matches). Star the [core repo](https://github.com/httpdss/structkit).
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
@@ -10,8 +10,9 @@ Companion to [StructKit](https://github.com/httpdss/structkit). Pre-commit hooks
 - **structkit-lint**: Performs quality and safety checks on structure definitions
 
 Both hooks run automatically on staged files matching the patterns:
-- `.struct.yaml`
-- `*.struct.yaml`
+- `.structkit.yaml` (default project file)
+- `.struct.yaml` (legacy project file; still matched)
+- `*.structkit.yaml` / `*.struct.yaml`
 - `structures/**/*.yaml`
 - `structures/**/*.yml`
 
@@ -59,7 +60,7 @@ StructKit Validate...........................................................Fai
 - hook id: structkit-validate
 - exit code: 1
 
-❗ Invalid YAML in .struct.yaml: mapping values are not allowed here
+❗ Invalid YAML in .structkit.yaml: mapping values are not allowed here
 ```
 
 ### structkit-lint
@@ -81,8 +82,8 @@ Performs advanced quality and safety checks on StructKit structure definitions.
 ```
 StructKit Lint...............................................................Passed
 Linted 1 file(s): 0 error(s), 2 warning(s)
-WARNING: .struct.yaml: [missing-description] Missing top-level description.
-WARNING: .struct.yaml (files.README.md): [unpinned-remote-url] Remote URL is not pinned to a stable ref
+WARNING: .structkit.yaml: [missing-description] Missing top-level description.
+WARNING: .structkit.yaml (files.README.md): [unpinned-remote-url] Remote URL is not pinned to a stable ref
 ```
 
 ## Hook Configuration
@@ -99,7 +100,7 @@ repos:
       - id: structkit-validate
         files: ^structures/.*\.ya?ml$
       - id: structkit-lint
-        files: \.struct\.yaml$
+        files: \.(structkit|struct)\.ya?ml$
 ```
 
 ### Skip lint warnings
@@ -128,7 +129,7 @@ pre-commit run structkit-validate --all-files
 pre-commit run structkit-lint
 
 # Run on a specific file
-pre-commit run structkit-validate --files .struct.yaml
+pre-commit run structkit-validate --files .structkit.yaml
 ```
 
 ## CI/CD Integration
@@ -162,10 +163,10 @@ To test the hooks without pre-commit:
 pip install -e .
 
 # Run validate hook
-structkit-validate-hook .struct.yaml
+structkit-validate-hook .structkit.yaml
 
-# Run lint hook
-structkit-lint-hook .struct.yaml structures/*.yaml
+# Run lint hook (legacy .struct.yaml still works)
+structkit-lint-hook .structkit.yaml .struct.yaml structures/*.yaml
 ```
 
 ## About StructKit
